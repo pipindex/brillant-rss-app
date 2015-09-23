@@ -11,6 +11,9 @@
 |
 */
 
+use App\Http\Controllers\ArticleController;
+
 Route::get('/', function () {
-    return view('welcome');
+    $controller = new ArticleController;
+    return $controller->index();
 });
