@@ -26,7 +26,7 @@ class ArticleController extends Controller
             $itemarray['author'] = (string)($item->xpath('.//dc:creator')[0]);
             $itemarray['category'] = (string)($item->xpath('.//category')[0]);
             $itemarray['description'] = html_entity_decode((string)($item->xpath('.//description')[0]));
-            $data[] = $itemarray;
+            $data[] = $itemarray; // add item to the array
         }
 
         return view('welcome', ['articles'=>$data]);
