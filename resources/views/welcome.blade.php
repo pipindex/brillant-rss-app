@@ -60,12 +60,14 @@
     <body>
         <div class="container">
             <div class="content" style="max-width: 800px; margin: auto;">
-                <h1>Articles</h1>
+                <h1>Brilliant RSS APP</h1>
+                <hr>
                 @foreach ($articles as $article)
                     <div @if ($article != end($articles)) style="padding-bottom: 16px; margin-bottom: 1em; border-bottom: 1px solid #333;" @endif>
                     <div style="text-align: left; max-width: 80%; margin: auto;">
                         <a href="<?= $article['link'] ?>">
                             <h1>{{ $article['title'] }}</h1>
+                            <h3> By {{ $article['author'] }} </h3>
                             <div class="date">{{ $article['date'] }}</div>
                             <div class="description">
                                 <?= $article['description'] ?>
