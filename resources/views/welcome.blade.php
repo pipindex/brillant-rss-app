@@ -68,7 +68,13 @@
                         <a href="<?= $article['link'] ?>">
                             <h1>{{ $article['title'] }}</h1>
                             <h3> By {{ $article['author'] }} </h3>
-                            <div class="date">{{ $article['date'] }}</div>
+
+                            <?php 
+                            $publishedDateInEpoch = strtotime($article['date']);
+                            $hoursSinceEpoch = \Carbon\Carbon::createFromTimeStamp($publishedDateInEpoch)->diffForHumans(); 
+                            ?>
+
+                            <div style="float:right; font-weight: bold; color: navy; margin-bottom: 10px; font-size:16px;" class="date">{{ $hoursSinceEpoch }}</div>
                             <div class="description">
                                 <?= $article['description'] ?>
                             </div>
