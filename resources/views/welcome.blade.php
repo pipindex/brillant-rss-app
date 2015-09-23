@@ -38,7 +38,18 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <h1>Articles</h1>
+                @foreach ($articles as $article)
+                    <div>
+                        <a href="<?= $article['link'] ?>">
+                            <h1>{{ $article['title'] }}</h1>
+                            <div>{{ $article['date'] }}</div>
+                            <div>
+                                {{ $article['description'] }}
+                            </div>
+                        <a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </body>
