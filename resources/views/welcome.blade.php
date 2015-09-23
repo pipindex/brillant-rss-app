@@ -33,21 +33,45 @@
             .title {
                 font-size: 96px;
             }
+
+            .attachment-large {
+                display: block;
+                margin: auto;
+                max-width: 100%;
+                margin: 1em 0 1em 0;
+            }
+
+            .date,
+            .description a {
+                text-decoration: none;
+                color: #333;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .content {
+                font-size: 0.75em;
+            }
+
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="content">
+            <div class="content" style="max-width: 800px; margin: auto;">
                 <h1>Articles</h1>
                 @foreach ($articles as $article)
-                    <div>
+                    <div @if ($article != end($articles)) style="padding-bottom: 16px; margin-bottom: 1em; border-bottom: 1px solid #333;" @endif>
+                    <div style="text-align: left; max-width: 80%; margin: auto;">
                         <a href="<?= $article['link'] ?>">
                             <h1>{{ $article['title'] }}</h1>
-                            <div>{{ $article['date'] }}</div>
-                            <div>
+                            <div class="date">{{ $article['date'] }}</div>
+                            <div class="description">
                                 <?= $article['description'] ?>
                             </div>
                         <a>
+                    </div>
                     </div>
                 @endforeach
             </div>
