@@ -78,6 +78,8 @@
                             <div class="description">
                                 <?= $article['description'] ?>
                             </div>
+
+                            <p style="color:#3b5998; font-size:18px;"><img style="width:25px;" src="http://www.elsevier.com/__data/assets/image/0009/91692/facebook.png"/> {{ $article['likeCount']}} </p>
                         <a>
                     </div>
                     </div>

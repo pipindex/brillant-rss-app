@@ -28,10 +28,25 @@ class ArticleController extends Controller
             $itemarray['author'] = (string)($item->xpath('.//dc:creator')[0]);
             $itemarray['category'] = (string)($item->xpath('.//category')[0]);
             $itemarray['description'] = html_entity_decode((string)($item->xpath('.//description')[0]));
+            $itemarray['likeCount'] = $this->getFacebookCount($itemarray['link']);
             $data[] = $itemarray; // add item to the array
         }
 
         return view('welcome', ['articles'=>$data]);
+    }
+
+
+    public function getFacebookCount($link) {
+
+
+        $facebookRequest = "https://api.facebook.com/method/links.getStats?urls=" . $link . "&format=json";
+
+        $client = new \GuzzleHttp\Client([ 'base_uri' => $facebookRequest,'timeout'  => 2.0,]);
+
+        $response = $client->get('')->getBody()->getContents();
+
+        return json_decode($response)[0]->total_count;
+
     }
 
     /**
